@@ -1,0 +1,56 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Compile",
+            "command": "/opt/LINARO.Toolchain-2017.10/arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "helloworld"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": [
+                "$tsc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Transfer",
+            "command": "sshpass",
+            "args": [
+                "-p",
+                "wago",
+                "scp",
+                "${workspaceFolder}/helloworld",
+                "root@192.168.1.17:~/"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$tsc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "StartGDBserver",
+            "command": "sshpass",
+            "args": [
+                "-p",
+                "wago",
+                "ssh",
+                "root@192.168.1.17",
+                "gdbserver",
+                ":9091",
+                "./helloworld"
+            ],
+            "group": "build"
+        }
+    ]
+}

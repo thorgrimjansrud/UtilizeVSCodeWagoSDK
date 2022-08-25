@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "MyDebugger",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/helloworld",
+            "miDebuggerServerAddress": "192.168.1.17:9091",
+            "miDebuggerPath": "/opt/LINARO.Toolchain-2017.10/arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gdb",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": true,
+            "linux": {
+              "MIMode": "gdb"
+            },
+            "osx": {
+              "MIMode": "gdb"
+            },
+            "windows": {
+              "MIMode": "gdb"
+         
+        },
+
+        }
+    ]
+}
